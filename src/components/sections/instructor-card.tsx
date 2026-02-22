@@ -28,7 +28,7 @@ export function InstructorCard({ name, image, experience, bio, qualifications }:
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <p className="text-sm text-muted-foreground leading-relaxed">{bio}</p>
+        <p className="text-base text-muted-foreground leading-relaxed">{bio}</p>
         <div>
           <h4 className="font-semibold mb-2">Qualifications</h4>
           <ul className="space-y-1 text-sm text-muted-foreground">

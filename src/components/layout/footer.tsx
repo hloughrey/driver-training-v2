@@ -18,7 +18,7 @@ export function Footer() {
           {/* Quick Links */}
           <div className="space-y-4">
             <h4 className="font-semibold">Quick Links</h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-base">
               <li>
                 <Link href="/training/c1-licence" className="text-muted-foreground hover:text-foreground transition-colors">
                   C1 Training
@@ -50,7 +50,7 @@ export function Footer() {
           {/* Service Areas */}
           <div className="space-y-4">
             <h4 className="font-semibold">Service Areas</h4>
-            <ul className="space-y-1 text-sm text-muted-foreground">
+            <ul className="space-y-1 text-base text-muted-foreground">
               <li>Warrington</li>
               <li>Runcorn</li>
               <li>Widnes</li>
@@ -67,7 +67,7 @@ export function Footer() {
           {/* Contact */}
           <div className="space-y-4">
             <h4 className="font-semibold">Contact Us</h4>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <div className="space-y-2 text-base text-muted-foreground">
               <p>
                 <a href="tel:07843847524" className="hover:text-foreground transition-colors">
                   07843 847524

@@ -9,7 +9,7 @@ export function CTASection() {
           <h2 className="text-3xl sm:text-4xl font-bold">
             Ready to Start Your Training?
           </h2>
-          <p className="text-lg opacity-90">
+          <p className="text-xl opacity-90">
             Get in touch today to book your first lesson or consultation
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">

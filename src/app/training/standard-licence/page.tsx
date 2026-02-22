@@ -183,7 +183,7 @@ export default function StandardLicensePage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-3xl font-bold">£35</div>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
+                  <ul className="space-y-2 text-base text-muted-foreground">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                       <span>1 hour lesson</span>
@@ -213,7 +213,7 @@ export default function StandardLicensePage() {
                     <div className="text-3xl font-bold">£330</div>
                     <div className="text-sm text-muted-foreground">Save £20</div>
                   </div>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
+                  <ul className="space-y-2 text-base text-muted-foreground">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                       <span>10 hours of lessons</span>
@@ -243,7 +243,7 @@ export default function StandardLicensePage() {
                     <div className="text-3xl font-bold">£640</div>
                     <div className="text-sm text-muted-foreground">Save £60</div>
                   </div>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
+                  <ul className="space-y-2 text-base text-muted-foreground">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                       <span>20 hours of lessons</span>

@@ -36,37 +36,37 @@ export function Header() {
           <nav className="hidden md:flex items-center space-x-6">
             <Link
               href="/"
-              className="text-sm font-medium transition-colors hover:text-primary"
+              className="text-base font-medium transition-colors hover:text-primary"
             >
               Home
             </Link>
             <Link
               href="/training/c1-licence"
-              className="text-sm font-medium transition-colors hover:text-primary"
+              className="text-base font-medium transition-colors hover:text-primary"
             >
               C1 Training
             </Link>
             <Link
               href="/training/standard-licence"
-              className="text-sm font-medium transition-colors hover:text-primary"
+              className="text-base font-medium transition-colors hover:text-primary"
             >
               Standard Training
             </Link>
             <Link
               href="/about"
-              className="text-sm font-medium transition-colors hover:text-primary"
+              className="text-base font-medium transition-colors hover:text-primary"
             >
               About
             </Link>
             <Link
               href="/faq"
-              className="text-sm font-medium transition-colors hover:text-primary"
+              className="text-base font-medium transition-colors hover:text-primary"
             >
               FAQ
             </Link>
             <Link
               href="/contact"
-              className="text-sm font-medium transition-colors hover:text-primary"
+              className="text-base font-medium transition-colors hover:text-primary"
             >
               Contact
             </Link>

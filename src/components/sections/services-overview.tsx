@@ -27,7 +27,7 @@ export function ServicesOverview() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 text-base">
                 <li className="flex items-start">
                   <span className="text-primary mr-2">✓</span>
                   <span>Vehicles 3.5-7.5 tonnes</span>
@@ -63,7 +63,7 @@ export function ServicesOverview() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 text-base">
                 <li className="flex items-start">
                   <span className="text-primary mr-2">✓</span>
                   <span>Defensive driving approach</span>

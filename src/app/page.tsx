@@ -55,15 +55,15 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
             <div className="space-y-2">
               <div className="text-4xl font-bold text-primary">40+</div>
-              <div className="text-sm text-muted-foreground">Years Combined Experience</div>
+              <div className="text-base text-muted-foreground">Years Combined Experience</div>
             </div>
             <div className="space-y-2">
               <div className="text-4xl font-bold text-primary">90%</div>
-              <div className="text-sm text-muted-foreground">First-Time Pass Rate</div>
+              <div className="text-base text-muted-foreground">First-Time Pass Rate</div>
             </div>
             <div className="space-y-2">
               <div className="text-4xl font-bold text-primary">100%</div>
-              <div className="text-sm text-muted-foreground">Ex-Paramedic Instructors</div>
+              <div className="text-base text-muted-foreground">Ex-Paramedic Instructors</div>
             </div>
           </div>
         </div>

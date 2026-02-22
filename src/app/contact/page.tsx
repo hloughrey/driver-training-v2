@@ -76,13 +76,13 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-semibold mb-2">Standard Training</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-base text-muted-foreground">
                       20-mile radius: Warrington, Runcorn, Widnes, St Helens, Wigan, Sale, Altrincham, Northwich, Knutsford, Chester
                     </p>
                   </div>
                   <div>
                     <h4 className="font-semibold mb-2">C1 Training</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-base text-muted-foreground">
                       Extended coverage: All standard areas plus Liverpool, Manchester, Stockport, Bolton, and wider Merseyside
                     </p>
                   </div>
