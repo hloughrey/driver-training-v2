@@ -13,7 +13,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Question", name: "question", widget: "string"}
-      - {label: "Answer", name: "answer", widget: "markdown"}
+      - {label: "Answer", name: "body", widget: "markdown"}
       - {label: "Category", name: "category", widget: "select",
          options: ["C1 License", "Standard License", "General", "Pricing"]}
       - {label: "Order", name: "order", widget: "number", default: 10}
@@ -26,5 +26,5 @@ collections:
     fields:
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Type", name: "type", widget: "select", options: ["C1", "Standard"]}
-      - {label: "Quote", name: "quote", widget: "text"}
+      - {label: "Quote", name: "body", widget: "text"}
       - {label: "Display", name: "display", widget: "boolean", default: true}
