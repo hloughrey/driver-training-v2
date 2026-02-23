@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { marked } from 'marked'
 
 export interface FAQ {
   question: string
@@ -25,21 +26,24 @@ export async function getFAQs(): Promise<FAQ[]> {
     }
 
     const filenames = fs.readdirSync(faqsDirectory)
-    const faqs = filenames
-      .filter(filename => filename.endsWith('.md'))
-      .map(filename => {
-        const filePath = path.join(faqsDirectory, filename)
-        const fileContents = fs.readFileSync(filePath, 'utf8')
-        const { data, content } = matter(fileContents)
+    const faqs = await Promise.all(
+      filenames
+        .filter(filename => filename.endsWith('.md'))
+        .map(async filename => {
+          const filePath = path.join(faqsDirectory, filename)
+          const fileContents = fs.readFileSync(filePath, 'utf8')
+          const { data, content } = matter(fileContents)
 
-        return {
-          question: data.question || '',
-          answer: content || data.answer || '',
-          category: data.category || 'General',
-          order: data.order || 0
-        } as FAQ
-      })
-      .sort((a, b) => a.order - b.order)
+          return {
+            question: data.question || '',
+            answer: await marked.parse(content || data.answer || ''),
+            category: data.category || 'General',
+            order: data.order || 0
+          } as FAQ
+        })
+    )
+
+    faqs.sort((a, b) => a.order - b.order)
 
     return faqs
   } catch (error) {
@@ -57,21 +61,24 @@ export async function getTestimonials(): Promise<Testimonial[]> {
     }
 
     const filenames = fs.readdirSync(testimonialsDirectory)
-    const testimonials = filenames
-      .filter(filename => filename.endsWith('.md'))
-      .map(filename => {
-        const filePath = path.join(testimonialsDirectory, filename)
-        const fileContents = fs.readFileSync(filePath, 'utf8')
-        const { data, content } = matter(fileContents)
+    const testimonials = await Promise.all(
+      filenames
+        .filter(filename => filename.endsWith('.md'))
+        .map(async filename => {
+          const filePath = path.join(testimonialsDirectory, filename)
+          const fileContents = fs.readFileSync(filePath, 'utf8')
+          const { data, content } = matter(fileContents)
 
-        return {
-          name: data.name || '',
-          type: data.type || 'Standard',
-          quote: content || data.quote || '',
-          display: data.display !== false
-        } as Testimonial
-      })
-      .filter(t => t.display)
+          return {
+            name: data.name || '',
+            type: data.type || 'Standard',
+            quote: await marked.parse(content || data.quote || ''),
+            display: data.display !== false
+          } as Testimonial
+        })
+    )
+
+    return testimonials.filter(t => t.display)
 
     return testimonials
   } catch (error) {
