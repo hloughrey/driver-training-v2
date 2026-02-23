@@ -2,6 +2,7 @@ import { Hero } from '@/components/sections/hero'
 import { ServicesOverview } from '@/components/sections/services-overview'
 import { InstructorCard } from '@/components/sections/instructor-card'
 import { CTASection } from '@/components/sections/cta-section'
+import { TestimonialsSection } from '@/components/sections/testimonials-section'
 
 export default function HomePage() {
   return (
@@ -68,6 +69,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <TestimonialsSection type="all" background="bg-muted/50" />
 
       <CTASection />
     </>

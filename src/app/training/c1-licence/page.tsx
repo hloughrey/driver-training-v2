@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CTASection } from '@/components/sections/cta-section'
+import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { createServiceSchema } from '@/lib/metadata'
 import { Ambulance, CheckCircle, Users, Clock } from 'lucide-react'
 import Link from 'next/link'
@@ -233,6 +234,8 @@ export default function C1LicensePage() {
           </div>
         </div>
       </section>
+
+      <TestimonialsSection type="C1" background="bg-background" />
 
       {/* Service Area */}
       <section className="py-16 bg-background">

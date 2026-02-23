@@ -79,8 +79,6 @@ export async function getTestimonials(): Promise<Testimonial[]> {
     )
 
     return testimonials.filter(t => t.display)
-
-    return testimonials
   } catch (error) {
     console.error('Error loading testimonials:', error)
     return []
