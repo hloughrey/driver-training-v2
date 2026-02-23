@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
-import { Menu } from 'lucide-react'
+import { Menu, ChevronDown } from 'lucide-react'
 import { MobileNav } from './mobile-nav'
 
 export function Header() {
@@ -40,18 +40,26 @@ export function Header() {
             >
               Home
             </Link>
-            <Link
-              href="/training/c1-licence"
-              className="text-base font-medium transition-colors hover:text-primary"
-            >
-              C1 Training
-            </Link>
-            <Link
-              href="/training/standard-licence"
-              className="text-base font-medium transition-colors hover:text-primary"
-            >
-              Standard Training
-            </Link>
+            <div className="relative group">
+              <button className="text-base font-medium transition-colors hover:text-primary flex items-center gap-1">
+                Services
+                <ChevronDown className="h-4 w-4" />
+              </button>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-background border rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all">
+                <Link
+                  href="/training/c1-licence"
+                  className="block px-4 py-2 text-sm hover:bg-muted transition-colors"
+                >
+                  C1 Training
+                </Link>
+                <Link
+                  href="/training/standard-licence"
+                  className="block px-4 py-2 text-sm hover:bg-muted transition-colors"
+                >
+                  Standard Training
+                </Link>
+              </div>
+            </div>
             <Link
               href="/about"
               className="text-base font-medium transition-colors hover:text-primary"

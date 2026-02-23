@@ -29,6 +29,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
           >
             Home
           </Link>
+          <div className="border-t pt-4 mt-4" />
           <Link
             href="/training/c1-licence"
             onClick={onClose}
