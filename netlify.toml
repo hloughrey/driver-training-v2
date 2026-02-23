@@ -14,7 +14,14 @@
   to = "/admin/index.html"
   status = 200
 
-# Security headers
+# Admin-specific headers (allow Netlify Identity widget)
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    Content-Security-Policy = "frame-ancestors 'self' https://identity.netlify.com"
+
+# Global security headers
 [[headers]]
   for = "/*"
   [headers.values]

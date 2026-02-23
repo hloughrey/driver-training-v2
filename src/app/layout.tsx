@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CookieConsent } from "@/components/cookie-consent";
+import IdentityTokenRedirect from "@/components/IdentityTokenRedirect";
 import { defaultMetadata, createLocalBusinessSchema } from "@/lib/metadata";
 
 const geistSans = Geist({
@@ -40,6 +41,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <CookieConsent />
+        <IdentityTokenRedirect />
       </body>
     </html>
   );
