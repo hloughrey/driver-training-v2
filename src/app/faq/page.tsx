@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { CTASection } from '@/components/sections/cta-section'
+import { PageHero } from '@/components/sections/page-hero'
 
 export const metadata: Metadata = {
   title: 'FAQ - Frequently Asked Questions',
@@ -45,14 +46,13 @@ export default async function FAQPage() {
         }}
       />
 
-      <div className="py-16 sm:py-24">
+      <PageHero
+        title="Frequently Asked Questions"
+        description="Everything you need to know about our driver training services"
+      />
+
+      <div className="py-16">
         <div className="container px-4">
-          <div className="max-w-3xl mx-auto text-center space-y-4 mb-12">
-            <h1 className="text-4xl sm:text-5xl font-bold">Frequently Asked Questions</h1>
-            <p className="text-lg text-muted-foreground">
-              Everything you need to know about our driver training services
-            </p>
-          </div>
 
           <div className="max-w-4xl mx-auto space-y-12">
             {categorizedFAQs.map(({ category, faqs: categoryFAQs }) => (

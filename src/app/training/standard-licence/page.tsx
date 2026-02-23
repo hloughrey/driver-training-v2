@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { CTASection } from '@/components/sections/cta-section'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
+import { PageHero } from '@/components/sections/page-hero'
 import { createServiceSchema } from '@/lib/metadata'
 import { Car, CheckCircle, Shield, Clock } from 'lucide-react'
 import Link from 'next/link'
@@ -27,28 +28,21 @@ export default function StandardLicensePage() {
         }}
       />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-muted/50 to-background py-20">
-        <div className="container px-4">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <div className="inline-block p-3 bg-primary/10 rounded-full mb-4">
-              <Car className="h-12 w-12 text-primary" />
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-bold">Standard Driving Lessons</h1>
-            <p className="text-xl text-muted-foreground">
-              Learn to drive with confidence from ex-paramedic instructors
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button asChild size="lg">
-                <Link href="/contact">Book Your Lessons</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href="tel:07843847524">Call: 07843 847524</a>
-              </Button>
-            </div>
+      <PageHero
+        title="Standard Driving Lessons"
+        description="Learn to drive with confidence from ex-paramedic instructors"
+        icon={<Car className="h-12 w-12 text-primary" />}
+        actions={
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg">
+              <Link href="/contact">Book Your Lessons</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <a href="tel:07843847524">Call: 07843 847524</a>
+            </Button>
           </div>
-        </div>
-      </section>
+        }
+      />
 
       {/* Why Choose Us */}
       <section className="py-16 bg-background">

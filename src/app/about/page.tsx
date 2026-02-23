@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { InstructorCard } from '@/components/sections/instructor-card'
 import { CTASection } from '@/components/sections/cta-section'
+import { PageHero } from '@/components/sections/page-hero'
 import { createPersonSchema } from '@/lib/metadata'
 
 export const metadata: Metadata = {
@@ -54,14 +55,13 @@ export default function AboutPage() {
         }}
       />
 
-      <div className="py-16 sm:py-24">
+      <PageHero
+        title="About Us"
+        description="Two ex-paramedic driving instructors with a combined 40+ years of emergency services experience, dedicated to providing the highest quality driver training in Warrington and surrounding areas."
+      />
+
+      <div className="py-16">
         <div className="container px-4">
-          <div className="max-w-3xl mx-auto text-center space-y-6 mb-16">
-            <h1 className="text-4xl sm:text-5xl font-bold">About Us</h1>
-            <p className="text-lg text-muted-foreground">
-              We are two ex-paramedic driving instructors with a combined 40+ years of emergency services experience, dedicated to providing the highest quality driver training in Warrington and surrounding areas.
-            </p>
-          </div>
 
           <div className="max-w-4xl mx-auto space-y-12 mb-16">
             <div className="prose prose-lg max-w-none">

@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { ContactForm } from '@/components/forms/contact-form'
+import { PageHero } from '@/components/sections/page-hero'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Phone, Mail, MapPin } from 'lucide-react'
 
@@ -10,16 +11,15 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="py-16 sm:py-24">
-      <div className="container px-4">
-        <div className="max-w-3xl mx-auto text-center space-y-4 mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold">Contact Us</h1>
-          <p className="text-lg text-muted-foreground">
-            Get in touch to book your lessons or ask any questions
-          </p>
-        </div>
+    <>
+      <PageHero
+        title="Contact Us"
+        description="Get in touch to book your lessons or ask any questions"
+      />
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div className="py-16">
+        <div className="container px-4">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Contact Form */}
           <div>
             <ContactForm />
@@ -109,7 +109,8 @@ export default function ContactPage() {
             </Card>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
