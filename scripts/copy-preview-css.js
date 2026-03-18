@@ -1,5 +1,8 @@
 const fs = require('fs'), path = require('path')
-const dir = path.join('.next', 'static', 'css')
+// Turbopack outputs CSS to static/chunks, not static/css
+const dir = fs.existsSync(path.join('.next', 'static', 'css'))
+  ? path.join('.next', 'static', 'css')
+  : path.join('.next', 'static', 'chunks')
 const out = path.join('public', 'admin', 'preview.css')
 const css = fs.readdirSync(dir)
   .filter(f => f.endsWith('.css'))
