@@ -1,25 +1,24 @@
-phone: "07843 847524"
-phone_href: "tel:07843847524"
-email: "info@c1drivertrainingnorthwest.com"
-email_href: "mailto:info@c1drivertrainingnorthwest.com"
-location: "Based in Warrington, Cheshire"
+phone: 07843 847524
+phone_href: tel:07843847524
+email: info@c1drivertrainingnorthwest.com
+email_href: mailto:info@c1drivertrainingnorthwest.com
+location: Based in Bolton
 service_areas_standard:
   - Warrington
-  - Runcorn
-  - Widnes
-  - St Helens
   - Wigan
-  - Sale
-  - Altrincham
-  - Northwich
-  - Knutsford
-  - Chester
+  - Bolton
+  - Westhoughton
+  - Leigh
+  - Culcheth
+  - Atherton
+  - Lowton
+  - Glazebury
 service_areas_c1:
   - Warrington
-  - Liverpool
   - Manchester
-  - Stockport
   - Bolton
   - Wigan
-  - Cheshire
-  - Merseyside
+  - Chorley
+  - Manchester
+  - Preston
+  - Southport
