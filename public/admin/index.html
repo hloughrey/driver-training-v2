@@ -383,6 +383,22 @@
       );
     };
     CMS.registerPreviewTemplate('site', SiteSettingsPreview);
+
+    // Collection-level dispatchers for Decap CMS 3.x (looks up by collection name for files collections)
+    var PagesPreview = function(props) {
+      var path = (props.entry.get('path') || props.entry.get('slug') || '');
+      if (path.indexOf('homepage') !== -1) return HomepagePreview(props);
+      if (path.indexOf('c1-licence') !== -1) return C1Preview(props);
+      if (path.indexOf('standard-licence') !== -1) return StandardPreview(props);
+      if (path.indexOf('about') !== -1) return AboutPreview(props);
+      return null;
+    };
+    CMS.registerPreviewTemplate('pages', PagesPreview);
+
+    var SettingsPreview = function(props) {
+      return SiteSettingsPreview(props);
+    };
+    CMS.registerPreviewTemplate('settings', SettingsPreview);
   </script>
 </body>
 </html>
