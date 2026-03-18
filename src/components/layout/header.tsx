@@ -6,7 +6,12 @@ import { Button } from '@/components/ui/button'
 import { Menu, ChevronDown } from 'lucide-react'
 import { MobileNav } from './mobile-nav'
 
-export function Header() {
+interface HeaderProps {
+  phone: string
+  phone_href: string
+}
+
+export function Header({ phone, phone_href }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -79,7 +84,7 @@ export function Header() {
               Contact
             </Link>
             <Button asChild size="sm">
-              <a href="tel:07843847524">Call: 07843 847524</a>
+              <a href={phone_href}>Call: {phone}</a>
             </Button>
           </nav>
 
@@ -97,6 +102,8 @@ export function Header() {
       <MobileNav
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
+        phone={phone}
+        phone_href={phone_href}
       />
     </>
   )

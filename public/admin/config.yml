@@ -6,6 +6,239 @@ media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "homepage"
+        label: "Homepage"
+        file: "src/content/pages/homepage.yml"
+        fields:
+          - name: hero
+            label: Hero Section
+            widget: object
+            fields:
+              - {label: "Headline", name: headline, widget: string}
+              - {label: "Subheadline", name: subheadline, widget: string}
+              - {label: "Description", name: description, widget: text}
+              - {label: "Primary CTA Text", name: primary_cta_text, widget: string}
+              - {label: "Primary CTA Link", name: primary_cta_href, widget: string}
+              - {label: "Secondary CTA Text", name: secondary_cta_text, widget: string}
+              - {label: "Secondary CTA Link", name: secondary_cta_href, widget: string}
+          - name: services
+            label: Services Section
+            widget: object
+            fields:
+              - {label: "Section Title", name: title, widget: string}
+              - {label: "Section Subtitle", name: subtitle, widget: string}
+              - name: c1
+                label: C1 Training Card
+                widget: object
+                fields:
+                  - {label: "Title", name: title, widget: string}
+                  - {label: "Description", name: description, widget: string}
+                  - name: features
+                    label: Features
+                    widget: list
+                    field: {label: Feature, name: feature, widget: string}
+              - name: standard
+                label: Standard Training Card
+                widget: object
+                fields:
+                  - {label: "Title", name: title, widget: string}
+                  - {label: "Description", name: description, widget: string}
+                  - name: features
+                    label: Features
+                    widget: list
+                    field: {label: Feature, name: feature, widget: string}
+          - name: instructors_section
+            label: Instructors Section Header
+            widget: object
+            fields:
+              - {label: "Title", name: title, widget: string}
+              - {label: "Subtitle", name: subtitle, widget: string}
+          - name: stats
+            label: Stats
+            widget: list
+            fields:
+              - {label: "Value", name: value, widget: string}
+              - {label: "Label", name: label, widget: string}
+
+      - name: "c1-licence"
+        label: "C1 Licence Page"
+        file: "src/content/pages/c1-licence.yml"
+        fields:
+          - name: hero
+            label: Hero
+            widget: object
+            fields:
+              - {label: "Title", name: title, widget: string}
+              - {label: "Description", name: description, widget: text}
+          - name: what_is_c1
+            label: What is C1 Section
+            widget: object
+            fields:
+              - {label: "Heading", name: heading, widget: string}
+              - {label: "Text", name: text, widget: text}
+              - {label: "Who Needs Title", name: who_needs_title, widget: string}
+              - name: who_needs
+                label: Who Needs List
+                widget: list
+                field: {label: Item, name: item, widget: string}
+          - name: advantages
+            label: Paramedic Advantage Section
+            widget: object
+            fields:
+              - {label: "Title", name: title, widget: string}
+              - name: items
+                label: Advantage Cards
+                widget: list
+                fields:
+                  - {label: "Title", name: title, widget: string}
+                  - {label: "Description", name: description, widget: text}
+          - name: course
+            label: Course Structure
+            widget: object
+            fields:
+              - name: steps
+                label: Steps
+                widget: list
+                fields:
+                  - {label: "Heading", name: heading, widget: string}
+                  - {label: "Description", name: description, widget: text}
+          - name: pricing
+            label: Pricing
+            widget: object
+            fields:
+              - {label: "Title", name: title, widget: string}
+              - {label: "Description", name: description, widget: text}
+              - name: includes
+                label: What's Included
+                widget: list
+                field: {label: Item, name: item, widget: string}
+              - {label: "CTA Text", name: cta_text, widget: string}
+          - name: service_areas
+            label: Service Areas
+            widget: object
+            fields:
+              - {label: "Title", name: title, widget: string}
+              - {label: "Description", name: description, widget: string}
+              - name: areas
+                label: Areas
+                widget: list
+                field: {label: Area, name: area, widget: string}
+              - {label: "Note", name: note, widget: string}
+
+      - name: "standard-licence"
+        label: "Standard Licence Page"
+        file: "src/content/pages/standard-licence.yml"
+        fields:
+          - name: hero
+            label: Hero
+            widget: object
+            fields:
+              - {label: "Title", name: title, widget: string}
+              - {label: "Description", name: description, widget: text}
+          - name: why_us
+            label: Why Choose Us Section
+            widget: object
+            fields:
+              - {label: "Title", name: title, widget: string}
+              - name: items
+                label: Cards
+                widget: list
+                fields:
+                  - {label: "Title", name: title, widget: string}
+                  - {label: "Description", name: description, widget: text}
+          - name: what_you_learn
+            label: What You'll Learn Section
+            widget: object
+            fields:
+              - {label: "Title", name: title, widget: string}
+              - name: items
+                label: Items
+                widget: list
+                fields:
+                  - {label: "Heading", name: heading, widget: string}
+                  - {label: "Description", name: description, widget: text}
+          - name: pricing
+            label: Pricing
+            widget: object
+            fields:
+              - {label: "Title", name: title, widget: string}
+              - name: packages
+                label: Packages
+                widget: list
+                fields:
+                  - {label: "Name", name: name, widget: string}
+                  - {label: "Tagline", name: tagline, widget: string}
+                  - {label: "Price", name: price, widget: string}
+                  - {label: "Savings", name: savings, widget: string, required: false}
+                  - {label: "Featured", name: featured, widget: boolean, default: false}
+                  - name: features
+                    label: Features
+                    widget: list
+                    field: {label: Feature, name: feature, widget: string}
+              - {label: "Note", name: note, widget: string}
+          - name: service_areas
+            label: Service Areas
+            widget: object
+            fields:
+              - {label: "Title", name: title, widget: string}
+              - {label: "Description", name: description, widget: string}
+              - name: areas
+                label: Areas
+                widget: list
+                field: {label: Area, name: area, widget: string}
+
+      - name: "about"
+        label: "About Page"
+        file: "src/content/pages/about.yml"
+        fields:
+          - name: hero
+            label: Hero
+            widget: object
+            fields:
+              - {label: "Title", name: title, widget: string}
+              - {label: "Description", name: description, widget: text}
+          - name: story
+            label: Our Story Paragraphs
+            widget: list
+            field: {label: Paragraph, name: paragraph, widget: text}
+          - name: instructors
+            label: Instructors
+            widget: list
+            fields:
+              - {label: "Name", name: name, widget: string}
+              - {label: "Image", name: image, widget: image}
+              - {label: "Years Experience", name: experience, widget: number}
+              - {label: "Bio", name: bio, widget: text}
+              - name: qualifications
+                label: Qualifications
+                widget: list
+                field: {label: Qualification, name: qualification, widget: string}
+              - {label: "Job Title", name: job_title, widget: string}
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - name: "site"
+        label: "Global Site Settings"
+        file: "src/content/pages/site.yml"
+        fields:
+          - {label: "Phone Number", name: phone, widget: string, hint: "Display format e.g. 07843 847524"}
+          - {label: "Phone Link", name: phone_href, widget: string, hint: "e.g. tel:07843847524"}
+          - {label: "Email Address", name: email, widget: string}
+          - {label: "Email Link", name: email_href, widget: string, hint: "e.g. mailto:info@example.com"}
+          - {label: "Location", name: location, widget: string, hint: "e.g. Based in Warrington, Cheshire"}
+          - name: service_areas_standard
+            label: Standard Training Service Areas
+            widget: list
+            field: {label: Area, name: area, widget: string}
+          - name: service_areas_c1
+            label: C1 Training Service Areas
+            widget: list
+            field: {label: Area, name: area, widget: string}
+
   - name: "faqs"
     label: "FAQs"
     folder: "src/content/faqs"

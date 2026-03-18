@@ -3,61 +3,50 @@ import { InstructorCard } from '@/components/sections/instructor-card'
 import { CTASection } from '@/components/sections/cta-section'
 import { PageHero } from '@/components/sections/page-hero'
 import { createPersonSchema } from '@/lib/metadata'
+import { getPageContent, getSiteSettings } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'About Us - Ex-Paramedic Driving Instructors',
   description: 'Meet Jayne and Neil, ex-paramedic driving instructors with 40+ years combined experience serving Warrington, Cheshire, and Greater Manchester.',
 }
 
-const instructors = [
-  {
-    name: 'Jayne Cumisky',
-    image: '/jayne.jpg',
-    experience: 18,
-    bio: 'Jayne brings her extensive 18 years of experience from the ambulance service to help paramedic trainees master the specific skills needed for emergency medical transport. Her calm, methodical approach helps even nervous students gain confidence with larger C1 vehicles and emergency response driving techniques. Specializing in blue light training and ambulance operation, Jayne ensures all students meet the highest safety standards.',
-    qualifications: [
-      'ADI (Approved Driving Instructor) - DVSA Certified',
-      'Defensive driving coach with 15+ years of Emergency Response Driving experience',
-      'CET',
-      'CAVA'
-    ],
-    jobTitle: 'ADI & C1 Driving Instructor'
-  },
-  {
-    name: 'Neil Harrison',
-    image: '/neil.png',
-    experience: 22,
-    bio: "Neil's technical expertise and patient teaching style have helped hundreds of paramedic trainees successfully obtain their C1 license with a first-time pass rate of over 90%. With 22 years in emergency services, he specializes in helping students master the challenging technical aspects of handling larger emergency vehicles, including reversing maneuvers, hazard perception, and safe driving in all weather conditions.",
-    qualifications: [
-      'ADI (Approved Driving Instructor) - DVSA Certified',
-      'Defensive Driving coach with 20+ years of Emergency Response Driving experience',
-      'Former Emergency Services Driver Trainer and Safety Consultant',
-      'CET',
-      'CAVA'
-    ],
-    jobTitle: 'ADI & C1 Driving Instructor'
-  }
-]
+interface Instructor {
+  name: string
+  image: string
+  experience: number
+  bio: string
+  qualifications: string[]
+  job_title: string
+}
+
+interface AboutContent {
+  hero: { title: string; description: string }
+  story: string[]
+  instructors: Instructor[]
+}
 
 export default function AboutPage() {
+  const content = getPageContent('about') as unknown as AboutContent
+  const site = getSiteSettings()
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(instructors.map(i =>
+          __html: JSON.stringify(content.instructors.map(i =>
             createPersonSchema({
               name: i.name,
               description: i.bio,
-              jobTitle: i.jobTitle
+              jobTitle: i.job_title
             })
           )),
         }}
       />
 
       <PageHero
-        title="About Us"
-        description="Two ex-paramedic driving instructors with a combined 40+ years of emergency services experience, dedicated to providing the highest quality driver training in Warrington and surrounding areas."
+        title={content.hero.title}
+        description={content.hero.description}
       />
 
       <div className="py-16">
@@ -66,18 +55,17 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto space-y-12 mb-16">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-2xl font-bold mb-4">Our Story</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                Having both served as paramedics for many years, we understand the unique challenges and requirements of emergency vehicle driving. Our transition from paramedic work to driver training was driven by a passion to share the critical skills we developed in emergency services with the next generation of ambulance drivers and everyday motorists.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mt-4">
-                Our emergency services background gives us a unique perspective that sets us apart from traditional driving instructors. We don't just teach the mechanics of driving—we instill defensive driving techniques, hazard awareness, and the calm, methodical approach that comes from years of high-pressure emergency response driving.
-              </p>
+              {content.story.map((paragraph, i) => (
+                <p key={i} className="text-muted-foreground leading-relaxed mt-4">
+                  {paragraph}
+                </p>
+              ))}
             </div>
 
             <div className="prose prose-lg max-w-none">
               <h2 className="text-2xl font-bold mb-4">Service Areas</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Based in Warrington, Cheshire, we provide driver training across a wide area:
+                Based in {site.location.replace('Based in ', '')}, we provide driver training across a wide area:
               </p>
               <div className="mt-4">
                 <h3 className="text-lg font-semibold mb-2">Standard License Training</h3>
@@ -85,16 +73,9 @@ export default function AboutPage() {
                   20-mile radius from Warrington, covering:
                 </p>
                 <ul className="grid grid-cols-2 gap-2 text-muted-foreground">
-                  <li>Warrington</li>
-                  <li>Runcorn</li>
-                  <li>Widnes</li>
-                  <li>St Helens</li>
-                  <li>Wigan</li>
-                  <li>Sale</li>
-                  <li>Altrincham</li>
-                  <li>Northwich</li>
-                  <li>Knutsford</li>
-                  <li>Chester</li>
+                  {site.service_areas_standard.map((area, i) => (
+                    <li key={i}>{area}</li>
+                  ))}
                 </ul>
               </div>
               <div className="mt-6">
@@ -107,7 +88,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {instructors.map((instructor) => (
+            {content.instructors.map((instructor) => (
               <InstructorCard key={instructor.name} {...instructor} />
             ))}
           </div>

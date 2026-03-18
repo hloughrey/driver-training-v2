@@ -1,0 +1,78 @@
+hero:
+  title: "Standard Driving Lessons"
+  description: "Learn to drive with confidence from ex-paramedic instructors"
+
+why_us:
+  title: "Why Learn With Us?"
+  items:
+    - title: "Defensive Driving Expertise"
+      description: "Our emergency services background means we teach defensive driving techniques from day one, helping you become a safer, more aware driver."
+    - title: "40+ Years Experience"
+      description: "Combined emergency services and driving instruction experience means you're learning from true professionals."
+    - title: "Flexible Scheduling"
+      description: "We offer flexible lesson times to fit around your work, studies, or other commitments. Evening and weekend slots available."
+    - title: "Patient, Calm Instruction"
+      description: "Our paramedic background taught us to stay calm under pressure and communicate clearly—perfect skills for helping nervous learners."
+
+what_you_learn:
+  title: "What You'll Learn"
+  items:
+    - heading: "Vehicle Controls & Road Safety"
+      description: "Master the basics of vehicle control, including steering, gear changes, clutch control, and understanding road signs and markings."
+    - heading: "Hazard Awareness & Defensive Driving"
+      description: "Learn to identify and respond to potential hazards early, using defensive driving techniques developed from emergency services experience."
+    - heading: "Maneuvers & Parking"
+      description: "Perfect your parallel parking, bay parking, and all test maneuvers with patient, step-by-step instruction."
+    - heading: "All Weather & Driving Conditions"
+      description: "Gain confidence driving in rain, at night, and in various traffic conditions across urban and rural areas."
+    - heading: "Test Preparation"
+      description: "Comprehensive preparation for your practical driving test, including mock tests on actual test routes."
+
+pricing:
+  title: "Lesson Packages"
+  packages:
+    - name: "Single Lesson"
+      tagline: "Try before you commit"
+      price: "£35"
+      savings: ""
+      featured: false
+      features:
+        - "1 hour lesson"
+        - "Flexible scheduling"
+        - "Perfect for first timers"
+    - name: "10 Lesson Package"
+      tagline: "Most Popular"
+      price: "£330"
+      savings: "Save £20"
+      featured: true
+      features:
+        - "10 hours of lessons"
+        - "Flexible scheduling"
+        - "Progress tracking"
+    - name: "20 Lesson Package"
+      tagline: "Best Value"
+      price: "£640"
+      savings: "Save £60"
+      featured: false
+      features:
+        - "20 hours of lessons"
+        - "Flexible scheduling"
+        - "Complete test preparation"
+  note: "Payment plans available. Contact us to discuss options."
+
+service_areas:
+  title: "Service Area"
+  description: "We provide standard driving lessons within a 20-mile radius of Warrington, covering:"
+  areas:
+    - Warrington
+    - Runcorn
+    - Widnes
+    - St Helens
+    - Wigan
+    - Sale
+    - Altrincham
+    - Northwich
+    - Knutsford
+    - Chester
+    - Parts of Manchester
+    - Surrounding areas

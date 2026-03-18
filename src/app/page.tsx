@@ -1,51 +1,60 @@
-import { Hero } from '@/components/sections/hero'
-import { ServicesOverview } from '@/components/sections/services-overview'
+import { Hero, HeroContent } from '@/components/sections/hero'
+import { ServicesOverview, ServicesContent } from '@/components/sections/services-overview'
 import { InstructorCard } from '@/components/sections/instructor-card'
 import { CTASection } from '@/components/sections/cta-section'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
+import { getPageContent, getSiteSettings } from '@/lib/content'
+
+interface Stat {
+  value: string
+  label: string
+}
+
+interface Instructor {
+  name: string
+  image: string
+  experience: number
+  bio: string
+  qualifications: string[]
+}
 
 export default function HomePage() {
+  const home = getPageContent('homepage')
+  const about = getPageContent('about')
+  const site = getSiteSettings()
+
+  const hero = home.hero as HeroContent
+  const services = home.services as ServicesContent
+  const instructorsSection = home.instructors_section as { title: string; subtitle: string }
+  const stats = home.stats as Stat[]
+  const instructors = (about.instructors as Instructor[])
+
   return (
     <>
-      <Hero />
-      <ServicesOverview />
+      <Hero content={hero} phone={site.phone} phone_href={site.phone_href} />
+      <ServicesOverview content={services} />
 
       {/* Instructors Section */}
       <section className="py-16 sm:py-24 bg-muted/50">
         <div className="container px-4">
           <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold">Meet Your Instructors</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold">{instructorsSection.title}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Ex-paramedic professionals with 40+ years combined experience
+              {instructorsSection.subtitle}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <InstructorCard
-              name="Jayne Cumisky"
-              image="/jayne.jpg"
-              experience={18}
-              bio="Jayne brings her extensive 18 years of experience from the ambulance service to help paramedic trainees master the specific skills needed for emergency medical transport. Her calm, methodical approach helps even nervous students gain confidence with larger C1 vehicles and emergency response driving techniques. Specializing in blue light training and ambulance operation, Jayne ensures all students meet the highest safety standards."
-              qualifications={[
-                'ADI (Approved Driving Instructor) - DVSA Certified',
-                'Defensive driving coach with 15+ years of Emergency Response Driving experience',
-                'CET',
-                'CAVA'
-              ]}
-            />
-            <InstructorCard
-              name="Neil Harrison"
-              image="/neil.png"
-              experience={22}
-              bio="Neil's technical expertise and patient teaching style have helped hundreds of paramedic trainees successfully obtain their C1 license with a first-time pass rate of over 90%. With 22 years in emergency services, he specializes in helping students master the challenging technical aspects of handling larger emergency vehicles, including reversing maneuvers, hazard perception, and safe driving in all weather conditions."
-              qualifications={[
-                'ADI (Approved Driving Instructor) - DVSA Certified',
-                'Defensive Driving coach with 20+ years of Emergency Response Driving experience',
-                'Former Emergency Services Driver Trainer and Safety Consultant',
-                'CET',
-                'CAVA'
-              ]}
-            />
+            {instructors.map((instructor) => (
+              <InstructorCard
+                key={instructor.name}
+                name={instructor.name}
+                image={instructor.image}
+                experience={instructor.experience}
+                bio={instructor.bio}
+                qualifications={instructor.qualifications}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -54,18 +63,12 @@ export default function HomePage() {
       <section className="py-16 bg-background">
         <div className="container px-4">
           <div className="max-w-4xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">40+</div>
-              <div className="text-base text-muted-foreground">Years Combined Experience</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">90%</div>
-              <div className="text-base text-muted-foreground">First-Time Pass Rate</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-primary">100%</div>
-              <div className="text-base text-muted-foreground">Ex-Paramedic Instructors</div>
-            </div>
+            {stats.map((stat, i) => (
+              <div key={i} className="space-y-2">
+                <div className="text-4xl font-bold text-primary">{stat.value}</div>
+                <div className="text-base text-muted-foreground">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

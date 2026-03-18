@@ -3,6 +3,27 @@ import path from 'path'
 import matter from 'gray-matter'
 import { marked } from 'marked'
 
+export interface SiteSettings {
+  phone: string
+  phone_href: string
+  email: string
+  email_href: string
+  location: string
+  service_areas_standard: string[]
+  service_areas_c1: string[]
+}
+
+export function getPageContent(page: string): Record<string, unknown> {
+  const filePath = path.join(process.cwd(), 'src/content/pages', `${page}.yml`)
+  const raw = fs.readFileSync(filePath, 'utf8')
+  const { data } = matter(`---\n${raw}\n---`)
+  return data as Record<string, unknown>
+}
+
+export function getSiteSettings(): SiteSettings {
+  return getPageContent('site') as unknown as SiteSettings
+}
+
 export interface FAQ {
   question: string
   answer: string

@@ -3,6 +3,7 @@ import { ContactForm } from '@/components/forms/contact-form'
 import { PageHero } from '@/components/sections/page-hero'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Phone, Mail, MapPin } from 'lucide-react'
+import { getSiteSettings } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'Contact Us - Driver Training North West',
@@ -10,6 +11,8 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
+  const site = getSiteSettings()
+
   return (
     <>
       <PageHero
@@ -37,10 +40,10 @@ export default function ContactPage() {
                   <div>
                     <div className="font-semibold mb-1">Phone</div>
                     <a
-                      href="tel:07843847524"
+                      href={site.phone_href}
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      07843 847524
+                      {site.phone}
                     </a>
                   </div>
                 </div>
@@ -50,10 +53,10 @@ export default function ContactPage() {
                   <div>
                     <div className="font-semibold mb-1">Email</div>
                     <a
-                      href="mailto:info@c1drivertrainingnorthwest.com"
+                      href={site.email_href}
                       className="text-muted-foreground hover:text-primary transition-colors break-all"
                     >
-                      info@c1drivertrainingnorthwest.com
+                      {site.email}
                     </a>
                   </div>
                 </div>
@@ -62,7 +65,7 @@ export default function ContactPage() {
                   <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                   <div>
                     <div className="font-semibold mb-1">Location</div>
-                    <p className="text-muted-foreground">Based in Warrington, Cheshire</p>
+                    <p className="text-muted-foreground">{site.location}</p>
                   </div>
                 </div>
               </CardContent>
@@ -77,13 +80,13 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-semibold mb-2">Standard Training</h4>
                     <p className="text-base text-muted-foreground">
-                      20-mile radius: Warrington, Runcorn, Widnes, St Helens, Wigan, Sale, Altrincham, Northwich, Knutsford, Chester
+                      20-mile radius: {site.service_areas_standard.join(', ')}
                     </p>
                   </div>
                   <div>
                     <h4 className="font-semibold mb-2">C1 Training</h4>
                     <p className="text-base text-muted-foreground">
-                      Extended coverage: All standard areas plus Liverpool, Manchester, Stockport, Bolton, and wider Merseyside
+                      Extended coverage: All standard areas plus {site.service_areas_c1.filter(a => !site.service_areas_standard.includes(a)).join(', ')}
                     </p>
                   </div>
                 </div>

@@ -15,9 +15,11 @@ import { Home, Truck, Car, Info, HelpCircle, Mail, Phone } from 'lucide-react'
 interface MobileNavProps {
   isOpen: boolean
   onClose: () => void
+  phone: string
+  phone_href: string
 }
 
-export function MobileNav({ isOpen, onClose }: MobileNavProps) {
+export function MobileNav({ isOpen, onClose, phone, phone_href }: MobileNavProps) {
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent side="right" className="w-[300px] sm:w-[400px] flex flex-col">
@@ -94,11 +96,11 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
 
         <SheetFooter>
           <Button size="lg" className="w-full gap-2 h-12" asChild>
-            <a href="tel:07843847524">
+            <a href={phone_href}>
               <Phone className="size-5" />
               <span className="flex flex-col items-start">
                 <span className="text-xs opacity-80">Call Now</span>
-                <span className="font-semibold">07843 847524</span>
+                <span className="font-semibold">{phone}</span>
               </span>
             </a>
           </Button>

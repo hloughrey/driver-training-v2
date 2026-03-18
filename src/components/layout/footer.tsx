@@ -1,6 +1,11 @@
 import Link from 'next/link'
+import { SiteSettings } from '@/lib/content'
 
-export function Footer() {
+interface FooterProps {
+  site: SiteSettings
+}
+
+export function Footer({ site }: FooterProps) {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -51,16 +56,9 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-semibold">Service Areas</h4>
             <ul className="space-y-1 text-base text-muted-foreground">
-              <li>Warrington</li>
-              <li>Runcorn</li>
-              <li>Widnes</li>
-              <li>St Helens</li>
-              <li>Wigan</li>
-              <li>Sale</li>
-              <li>Altrincham</li>
-              <li>Northwich</li>
-              <li>Knutsford</li>
-              <li>Chester</li>
+              {site.service_areas_standard.map((area, i) => (
+                <li key={i}>{area}</li>
+              ))}
             </ul>
           </div>
 
@@ -69,18 +67,16 @@ export function Footer() {
             <h4 className="font-semibold">Contact Us</h4>
             <div className="space-y-2 text-base text-muted-foreground">
               <p>
-                <a href="tel:07843847524" className="hover:text-foreground transition-colors">
-                  07843 847524
+                <a href={site.phone_href} className="hover:text-foreground transition-colors">
+                  {site.phone}
                 </a>
               </p>
               <p>
-                <a href="mailto:info@c1drivertrainingnorthwest.com" className="hover:text-foreground transition-colors break-all">
-                  info@c1drivertrainingnorthwest.com
+                <a href={site.email_href} className="hover:text-foreground transition-colors break-all">
+                  {site.email}
                 </a>
               </p>
-              <p className="pt-2">
-                Based in Warrington, Cheshire
-              </p>
+              <p className="pt-2">{site.location}</p>
             </div>
           </div>
         </div>

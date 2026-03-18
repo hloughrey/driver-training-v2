@@ -1,0 +1,63 @@
+hero:
+  title: "C1 License Training"
+  description: "Specialist training for ambulance and emergency vehicles (3.5-7.5 tonnes)"
+
+what_is_c1:
+  heading: "What is a C1 License?"
+  text: "A C1 driving license allows you to drive vehicles between 3.5 and 7.5 tonnes, including ambulances and other emergency vehicles. For paramedics and emergency medical technicians, obtaining a C1 license is essential for operating ambulances and patient transport vehicles."
+  who_needs_title: "Who Needs C1 Training?"
+  who_needs:
+    - "Paramedics and emergency medical technicians"
+    - "Ambulance service personnel"
+    - "Patient transport drivers"
+    - "Emergency services drivers"
+
+advantages:
+  title: "The Paramedic Advantage"
+  items:
+    - title: "Real-World Experience"
+      description: "Your instructors have 40+ years combined experience as paramedics. We understand the specific challenges of emergency vehicle driving because we've lived it."
+    - title: "Emergency Response Focus"
+      description: "Learn emergency response driving techniques, blue light protocols, and the calm decision-making skills essential for ambulance operation."
+    - title: "Paramedic-to-Paramedic Training"
+      description: "We speak your language and understand the pressures you'll face. Our training is tailored specifically for emergency medical professionals."
+    - title: "90% First-Time Pass Rate"
+      description: "Our proven teaching methods and comprehensive preparation help the vast majority of our students pass their C1 test first time."
+
+course:
+  steps:
+    - heading: "Initial Assessment"
+      description: "We assess your current driving skills and create a personalized training plan tailored to your needs and experience level."
+    - heading: "Vehicle Familiarization"
+      description: "Learn the specifics of handling larger vehicles, including weight distribution, turning circles, and braking distances."
+    - heading: "Maneuvers & Reversing"
+      description: "Master the challenging reversing exercises and maneuvers required for the C1 test, with a focus on ambulance-specific scenarios."
+    - heading: "Road Driving & Hazard Awareness"
+      description: "Develop advanced hazard perception skills and safe driving techniques for all weather conditions and traffic situations."
+    - heading: "Test Preparation"
+      description: "Comprehensive mock tests and final preparation to ensure you're fully confident and ready for your practical test."
+
+pricing:
+  title: "C1 License Training"
+  description: "Our C1 training is tailored to each individual's needs. Course duration and pricing depend on your current experience level and how quickly you progress."
+  includes:
+    - "Initial assessment and personalized training plan"
+    - "Practical driving instruction in C1 vehicles"
+    - "Maneuvers and reversing practice"
+    - "Mock test preparation"
+    - "All training materials"
+  cta_text: "Contact us for a free consultation and personalized quote"
+
+service_areas:
+  title: "Extended Coverage for C1 Training"
+  description: "We provide C1 training across a wider area than our standard lessons, including:"
+  areas:
+    - Warrington
+    - Liverpool
+    - Manchester
+    - Stockport
+    - Bolton
+    - Wigan
+    - Cheshire
+    - Merseyside
+  note: "Willing to travel further for specialized C1 training"

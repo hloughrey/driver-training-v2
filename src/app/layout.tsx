@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { CookieConsent } from "@/components/cookie-consent";
 import IdentityTokenRedirect from "@/components/IdentityTokenRedirect";
 import { defaultMetadata, createLocalBusinessSchema } from "@/lib/metadata";
+import { getSiteSettings } from "@/lib/content";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const site = getSiteSettings()
+
   return (
     <html lang="en-GB">
       <head>
@@ -37,9 +40,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
-        <Header />
+        <Header phone={site.phone} phone_href={site.phone_href} />
         <main className="flex-1">{children}</main>
-        <Footer />
+        <Footer site={site} />
         <CookieConsent />
         <IdentityTokenRedirect />
       </body>
