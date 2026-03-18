@@ -22,37 +22,32 @@
   </script>
 
   <script>
-    var h = React.createElement;
-    var PRIMARY = '#1a56db';
-    var MUTED = '#6b7280';
+    CMS.registerPreviewStyle('/admin/preview.css');
 
-    // Shared styles
-    var styles = {
-      page: { fontFamily: 'system-ui, sans-serif', maxWidth: '900px', margin: '0 auto', color: '#111' },
-      hero: {
-        padding: '80px 24px',
-        textAlign: 'center',
-        background: 'linear-gradient(to bottom, rgba(26,86,219,0.25), rgba(26,86,219,0.05))',
-        marginBottom: '0'
-      },
-      h1: { fontSize: '2.25rem', fontWeight: '700', marginBottom: '16px', lineHeight: '1.2' },
-      h2: { fontSize: '1.75rem', fontWeight: '700', marginBottom: '24px' },
-      p: { color: MUTED, marginBottom: '12px', lineHeight: '1.6' },
-      btn: { display: 'inline-block', padding: '10px 24px', background: PRIMARY, color: '#fff', borderRadius: '6px', textDecoration: 'none', marginRight: '8px' },
-      btnOutline: { display: 'inline-block', padding: '10px 24px', border: '1px solid ' + PRIMARY, color: PRIMARY, borderRadius: '6px', textDecoration: 'none' },
-      section: { padding: '48px 24px' },
-      sectionMuted: { padding: '48px 24px', background: '#f9fafb' },
-      card: { border: '1px solid #e5e7eb', borderRadius: '8px', padding: '20px', marginBottom: '16px' },
-      cardHighlight: { border: '2px solid ' + PRIMARY, borderRadius: '8px', padding: '20px', marginBottom: '16px' },
-      grid2: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' },
-      grid3: { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' },
-      check: { color: PRIMARY, marginRight: '8px' }
-    };
+    var h = React.createElement;
+
+    function PageHeroPreview(title, description) {
+      return h('section', { className: 'relative min-h-[400px] sm:min-h-[500px] overflow-hidden' },
+        h('div', { className: 'absolute inset-0 -z-10' },
+          h('img', {
+            src: '/driver-training.jpg',
+            alt: '',
+            style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }
+          }),
+          h('div', { className: 'absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/20 to-background/90' })
+        ),
+        h('div', { className: 'container px-4 py-20' },
+          h('div', { className: 'mx-auto max-w-3xl text-center space-y-6' },
+            h('h1', { className: 'text-4xl sm:text-5xl font-bold text-white' }, title || ''),
+            description && h('p', { className: 'text-xl text-white/90' }, description)
+          )
+        )
+      );
+    }
 
     // Homepage preview
     var HomepagePreview = function(props) {
-      var entry = props.entry;
-      var data = entry.getIn(['data']).toJS();
+      var data = props.entry.getIn(['data']).toJS();
       var hero = data.hero || {};
       var services = data.services || {};
       var c1 = services.c1 || {};
@@ -60,52 +55,96 @@
       var stats = data.stats || [];
       var instructors = data.instructors_section || {};
 
-      return h('div', { style: styles.page },
-        h('div', { style: styles.hero },
-          h('h1', { style: styles.h1 }, hero.headline || 'Headline'),
-          h('p', { style: { color: '#fff', marginBottom: '8px', fontWeight: '500' } }, hero.subheadline || ''),
-          h('p', { style: { color: '#e5e7eb', marginBottom: '24px' } }, hero.description || ''),
-          h('div', null,
-            h('span', { style: styles.btn }, hero.primary_cta_text || 'Primary CTA'),
-            h('span', { style: styles.btnOutline }, hero.secondary_cta_text || 'Secondary CTA')
-          )
-        ),
-        h('div', { style: styles.section },
-          h('h2', { style: { ...styles.h2, textAlign: 'center' } }, services.title || 'Our Services'),
-          h('p', { style: { ...styles.p, textAlign: 'center', marginBottom: '32px' } }, services.subtitle || ''),
-          h('div', { style: styles.grid2 },
-            h('div', { style: styles.cardHighlight },
-              h('h3', { style: { fontWeight: '600', marginBottom: '8px' } }, c1.title || 'C1 License Training'),
-              h('p', { style: styles.p }, c1.description || ''),
-              h('ul', { style: { listStyle: 'none', padding: 0 } },
-                (c1.features || []).map(function(f, i) {
-                  return h('li', { key: i, style: { marginBottom: '4px' } }, h('span', { style: styles.check }, '✓'), f);
-                })
-              )
-            ),
-            h('div', { style: styles.card },
-              h('h3', { style: { fontWeight: '600', marginBottom: '8px' } }, standard.title || 'Standard License Training'),
-              h('p', { style: styles.p }, standard.description || ''),
-              h('ul', { style: { listStyle: 'none', padding: 0 } },
-                (standard.features || []).map(function(f, i) {
-                  return h('li', { key: i, style: { marginBottom: '4px' } }, h('span', { style: styles.check }, '✓'), f);
-                })
+      return h('div', null,
+        h('section', { className: 'relative min-h-[500px] sm:min-h-[600px] overflow-hidden' },
+          h('div', { className: 'absolute inset-0 -z-10' },
+            h('img', {
+              src: '/driver-training.jpg',
+              alt: '',
+              style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }
+            }),
+            h('div', { className: 'absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/20 to-background/90' })
+          ),
+          h('div', { className: 'container px-4 py-20 sm:py-32' },
+            h('div', { className: 'mx-auto max-w-3xl text-center space-y-8' },
+              h('h1', { className: 'text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white' },
+                hero.headline || 'Headline'),
+              h('p', { className: 'text-lg sm:text-xl text-white/90 max-w-2xl mx-auto' },
+                hero.subheadline || ''),
+              h('p', { className: 'text-base sm:text-lg text-white/85' },
+                hero.description || ''),
+              h('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center items-center' },
+                h('span', { className: 'inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground h-11 px-8 text-sm font-medium' },
+                  hero.primary_cta_text || 'Primary CTA'),
+                h('span', { className: 'inline-flex items-center justify-center rounded-md border border-input bg-background h-11 px-8 text-sm font-medium' },
+                  hero.secondary_cta_text || 'Secondary CTA')
               )
             )
           )
         ),
-        h('div', { style: styles.sectionMuted },
-          h('h2', { style: { ...styles.h2, textAlign: 'center' } }, instructors.title || 'Meet Your Instructors'),
-          h('p', { style: { ...styles.p, textAlign: 'center' } }, instructors.subtitle || '')
+
+        h('section', { className: 'py-16 sm:py-24 bg-background' },
+          h('div', { className: 'container px-4' },
+            h('div', { className: 'text-center space-y-4 mb-12' },
+              h('h2', { className: 'text-3xl sm:text-4xl font-bold' }, services.title || 'Our Services'),
+              h('p', { className: 'text-muted-foreground max-w-2xl mx-auto' }, services.subtitle || '')
+            ),
+            h('div', { className: 'grid md:grid-cols-2 gap-8 max-w-5xl mx-auto' },
+              h('div', { className: 'rounded-xl border-2 border-primary bg-card text-card-foreground shadow' },
+                h('div', { className: 'p-6' },
+                  h('h3', { className: 'text-2xl font-semibold leading-none tracking-tight' }, c1.title || 'C1 License Training'),
+                  h('p', { className: 'text-sm text-muted-foreground mt-1.5' }, c1.description || '')
+                ),
+                h('div', { className: 'p-6 pt-0 space-y-4' },
+                  h('ul', { className: 'space-y-2 text-base' },
+                    (c1.features || []).map(function(f, i) {
+                      return h('li', { key: i, className: 'flex items-start' },
+                        h('span', { className: 'text-primary mr-2' }, '✓'),
+                        h('span', null, f)
+                      );
+                    })
+                  )
+                )
+              ),
+              h('div', { className: 'rounded-xl border bg-card text-card-foreground shadow' },
+                h('div', { className: 'p-6' },
+                  h('h3', { className: 'text-2xl font-semibold leading-none tracking-tight' }, standard.title || 'Standard License Training'),
+                  h('p', { className: 'text-sm text-muted-foreground mt-1.5' }, standard.description || '')
+                ),
+                h('div', { className: 'p-6 pt-0 space-y-4' },
+                  h('ul', { className: 'space-y-2 text-base' },
+                    (standard.features || []).map(function(f, i) {
+                      return h('li', { key: i, className: 'flex items-start' },
+                        h('span', { className: 'text-primary mr-2' }, '✓'),
+                        h('span', null, f)
+                      );
+                    })
+                  )
+                )
+              )
+            )
+          )
         ),
-        h('div', { style: { ...styles.section, background: '#fff' } },
-          h('div', { style: { ...styles.grid3, maxWidth: '600px', margin: '0 auto', textAlign: 'center' } },
-            stats.map(function(stat, i) {
-              return h('div', { key: i },
-                h('div', { style: { fontSize: '2rem', fontWeight: '700', color: PRIMARY } }, stat.value),
-                h('div', { style: { color: MUTED, fontSize: '0.875rem' } }, stat.label)
-              );
-            })
+
+        h('section', { className: 'py-16 sm:py-24 bg-muted/50' },
+          h('div', { className: 'container px-4' },
+            h('div', { className: 'text-center space-y-4 mb-12' },
+              h('h2', { className: 'text-3xl sm:text-4xl font-bold' }, instructors.title || 'Meet Your Instructors'),
+              h('p', { className: 'text-muted-foreground max-w-2xl mx-auto' }, instructors.subtitle || '')
+            )
+          )
+        ),
+
+        h('section', { className: 'py-16 bg-background' },
+          h('div', { className: 'container px-4' },
+            h('div', { className: 'max-w-4xl mx-auto grid sm:grid-cols-3 gap-8 text-center' },
+              stats.map(function(stat, i) {
+                return h('div', { key: i, className: 'space-y-2' },
+                  h('div', { className: 'text-4xl font-bold text-primary' }, stat.value),
+                  h('div', { className: 'text-base text-muted-foreground' }, stat.label)
+                );
+              })
+            )
           )
         )
       );
@@ -114,34 +153,80 @@
 
     // C1 Licence preview
     var C1Preview = function(props) {
-      var entry = props.entry;
-      var data = entry.getIn(['data']).toJS();
+      var data = props.entry.getIn(['data']).toJS();
       var hero = data.hero || {};
       var advantages = data.advantages || {};
+      var course = data.course || {};
       var pricing = data.pricing || {};
 
-      return h('div', { style: styles.page },
-        h('div', { style: { ...styles.sectionMuted, textAlign: 'center' } },
-          h('h1', { style: styles.h1 }, hero.title || 'C1 License Training'),
-          h('p', { style: styles.p }, hero.description || '')
-        ),
-        h('div', { style: styles.section },
-          h('h2', { style: { ...styles.h2, textAlign: 'center' } }, advantages.title || 'The Paramedic Advantage'),
-          h('div', { style: styles.grid2 },
-            (advantages.items || []).map(function(item, i) {
-              return h('div', { key: i, style: styles.card },
-                h('h3', { style: { fontWeight: '600', marginBottom: '8px' } }, item.title),
-                h('p', { style: styles.p }, item.description)
-              );
-            })
+      return h('div', null,
+        PageHeroPreview(hero.title, hero.description),
+
+        h('section', { className: 'py-16 bg-muted/50' },
+          h('div', { className: 'container px-4' },
+            h('div', { className: 'max-w-4xl mx-auto' },
+              h('h2', { className: 'text-3xl font-bold mb-8 text-center' }, advantages.title || 'The Paramedic Advantage'),
+              h('div', { className: 'grid sm:grid-cols-2 gap-6' },
+                (advantages.items || []).map(function(item, i) {
+                  return h('div', { key: i, className: 'rounded-xl border bg-card text-card-foreground shadow' },
+                    h('div', { className: 'p-6' },
+                      h('h3', { className: 'text-lg font-semibold leading-none tracking-tight' }, item.title)
+                    ),
+                    h('div', { className: 'p-6 pt-0' },
+                      h('p', { className: 'text-muted-foreground' }, item.description)
+                    )
+                  );
+                })
+              )
+            )
           )
         ),
-        h('div', { style: styles.sectionMuted },
-          h('h2', { style: { ...styles.h2, textAlign: 'center' } }, 'Pricing'),
-          h('div', { style: styles.cardHighlight },
-            h('h3', { style: { fontWeight: '600', fontSize: '1.25rem', marginBottom: '12px' } }, pricing.title || 'C1 License Training'),
-            h('p', { style: styles.p }, pricing.description || ''),
-            h('p', { style: { fontWeight: '600', marginBottom: '8px' } }, pricing.cta_text || '')
+
+        h('section', { className: 'py-16 bg-background' },
+          h('div', { className: 'container px-4' },
+            h('div', { className: 'max-w-4xl mx-auto' },
+              h('h2', { className: 'text-3xl font-bold mb-8' }, 'Course Structure'),
+              h('div', { className: 'rounded-xl border bg-card text-card-foreground shadow' },
+                h('div', { className: 'p-6' },
+                  h('h3', { className: 'text-lg font-semibold' }, 'Training Program')
+                ),
+                h('div', { className: 'p-6 pt-0 space-y-4' },
+                  (course.steps || []).map(function(step, i) {
+                    return h('div', { key: i },
+                      h('h4', { className: 'font-semibold mb-2' }, step.heading),
+                      h('p', { className: 'text-muted-foreground' }, step.description)
+                    );
+                  })
+                )
+              )
+            )
+          )
+        ),
+
+        h('section', { className: 'py-16 bg-muted/50' },
+          h('div', { className: 'container px-4' },
+            h('div', { className: 'max-w-4xl mx-auto' },
+              h('h2', { className: 'text-3xl font-bold mb-8 text-center' }, 'Pricing'),
+              h('div', { className: 'rounded-xl border-2 border-primary bg-card text-card-foreground shadow' },
+                h('div', { className: 'p-6' },
+                  h('h3', { className: 'text-2xl font-semibold' }, pricing.title || 'C1 License Training')
+                ),
+                h('div', { className: 'p-6 pt-0 space-y-4' },
+                  h('p', { className: 'text-muted-foreground' }, pricing.description || ''),
+                  (pricing.includes || []).length > 0 && h('div', { className: 'space-y-2' },
+                    h('p', { className: 'font-semibold' }, 'Typical course includes:'),
+                    h('ul', { className: 'space-y-1 text-muted-foreground ml-4' },
+                      (pricing.includes || []).map(function(item, i) {
+                        return h('li', { key: i }, '• ' + item);
+                      })
+                    )
+                  ),
+                  h('div', { className: 'pt-4 border-t' },
+                    h('p', { className: 'text-lg font-semibold mb-2' }, pricing.cta_text || '')
+                  )
+                )
+              )
+            )
           )
         )
       );
@@ -150,37 +235,71 @@
 
     // Standard Licence preview
     var StandardPreview = function(props) {
-      var entry = props.entry;
-      var data = entry.getIn(['data']).toJS();
+      var data = props.entry.getIn(['data']).toJS();
       var hero = data.hero || {};
+      var why_us = data.why_us || {};
       var pricing = data.pricing || {};
       var packages = pricing.packages || [];
 
-      return h('div', { style: styles.page },
-        h('div', { style: { ...styles.sectionMuted, textAlign: 'center' } },
-          h('h1', { style: styles.h1 }, hero.title || 'Standard Driving Lessons'),
-          h('p', { style: styles.p }, hero.description || '')
+      return h('div', null,
+        PageHeroPreview(hero.title, hero.description),
+
+        h('section', { className: 'py-16 bg-background' },
+          h('div', { className: 'container px-4' },
+            h('div', { className: 'max-w-4xl mx-auto' },
+              h('h2', { className: 'text-3xl font-bold mb-8 text-center' }, why_us.title || 'Why Choose Us'),
+              h('div', { className: 'grid sm:grid-cols-2 gap-6' },
+                (why_us.items || []).map(function(item, i) {
+                  return h('div', { key: i, className: 'rounded-xl border bg-card text-card-foreground shadow' },
+                    h('div', { className: 'p-6' },
+                      h('h3', { className: 'text-lg font-semibold leading-none tracking-tight' }, item.title)
+                    ),
+                    h('div', { className: 'p-6 pt-0' },
+                      h('p', { className: 'text-muted-foreground' }, item.description)
+                    )
+                  );
+                })
+              )
+            )
+          )
         ),
-        h('div', { style: styles.section },
-          h('h2', { style: { ...styles.h2, textAlign: 'center' } }, pricing.title || 'Lesson Packages'),
-          h('div', { style: styles.grid3 },
-            packages.map(function(pkg, i) {
-              return h('div', { key: i, style: pkg.featured ? styles.cardHighlight : styles.card },
-                h('h3', { style: { fontWeight: '600', marginBottom: '4px' } }, pkg.name),
-                h('p', { style: { color: pkg.featured ? PRIMARY : MUTED, fontSize: '0.875rem', marginBottom: '12px' } }, pkg.tagline),
-                h('div', { style: { fontSize: '1.75rem', fontWeight: '700', marginBottom: '4px' } }, pkg.price),
-                pkg.savings && h('div', { style: { color: MUTED, fontSize: '0.875rem', marginBottom: '12px' } }, pkg.savings),
-                h('ul', { style: { listStyle: 'none', padding: 0 } },
-                  (pkg.features || []).map(function(f, j) {
-                    return h('li', { key: j, style: { marginBottom: '4px', fontSize: '0.875rem', color: MUTED } },
-                      h('span', { style: styles.check }, '✓'), f
-                    );
-                  })
-                )
-              );
-            })
-          ),
-          pricing.note && h('p', { style: { ...styles.p, textAlign: 'center', marginTop: '16px' } }, pricing.note)
+
+        h('section', { className: 'py-16 bg-background' },
+          h('div', { className: 'container px-4' },
+            h('div', { className: 'max-w-4xl mx-auto' },
+              h('h2', { className: 'text-3xl font-bold mb-8 text-center' }, pricing.title || 'Lesson Packages'),
+              h('div', { className: 'grid md:grid-cols-3 gap-6' },
+                packages.map(function(pkg, i) {
+                  return h('div', {
+                    key: i,
+                    className: pkg.featured
+                      ? 'rounded-xl border-2 border-primary bg-card text-card-foreground shadow'
+                      : 'rounded-xl border bg-card text-card-foreground shadow'
+                  },
+                    h('div', { className: 'p-6' },
+                      h('h3', { className: 'font-semibold text-lg leading-none tracking-tight' }, pkg.name),
+                      h('p', { className: 'text-sm mt-1.5 ' + (pkg.featured ? 'text-primary font-semibold' : 'text-muted-foreground') }, pkg.tagline)
+                    ),
+                    h('div', { className: 'p-6 pt-0 space-y-4' },
+                      h('div', null,
+                        h('div', { className: 'text-3xl font-bold' }, pkg.price),
+                        pkg.savings && h('div', { className: 'text-sm text-muted-foreground' }, pkg.savings)
+                      ),
+                      h('ul', { className: 'space-y-2 text-base text-muted-foreground' },
+                        (pkg.features || []).map(function(f, j) {
+                          return h('li', { key: j, className: 'flex items-start gap-2' },
+                            h('span', { className: 'text-primary' }, '✓'),
+                            h('span', null, f)
+                          );
+                        })
+                      )
+                    )
+                  );
+                })
+              ),
+              pricing.note && h('p', { className: 'text-center text-muted-foreground mt-6' }, pricing.note)
+            )
+          )
         )
       );
     };
@@ -188,33 +307,36 @@
 
     // About page preview
     var AboutPreview = function(props) {
-      var entry = props.entry;
-      var data = entry.getIn(['data']).toJS();
+      var data = props.entry.getIn(['data']).toJS();
       var hero = data.hero || {};
       var story = data.story || [];
       var instructors = data.instructors || [];
 
-      return h('div', { style: styles.page },
-        h('div', { style: { ...styles.sectionMuted, textAlign: 'center' } },
-          h('h1', { style: styles.h1 }, hero.title || 'About Us'),
-          h('p', { style: styles.p }, hero.description || '')
-        ),
-        h('div', { style: styles.section },
-          h('h2', { style: styles.h2 }, 'Our Story'),
-          story.map(function(para, i) {
-            return h('p', { key: i, style: styles.p }, para);
-          })
-        ),
-        h('div', { style: { ...styles.section, background: '#f9fafb' } },
-          h('h2', { style: styles.h2 }, 'Instructors'),
-          h('div', { style: styles.grid2 },
-            instructors.map(function(inst, i) {
-              return h('div', { key: i, style: styles.card },
-                h('h3', { style: { fontWeight: '600', marginBottom: '4px' } }, inst.name),
-                h('p', { style: { color: PRIMARY, fontSize: '0.875rem', marginBottom: '8px' } }, inst.job_title + ' · ' + inst.experience + ' years'),
-                h('p', { style: { ...styles.p, fontSize: '0.875rem' } }, inst.bio)
-              );
-            })
+      return h('div', null,
+        PageHeroPreview(hero.title, hero.description),
+
+        h('div', { className: 'py-16' },
+          h('div', { className: 'container px-4' },
+            h('div', { className: 'max-w-4xl mx-auto space-y-12 mb-16' },
+              h('div', { className: 'prose prose-lg max-w-none' },
+                h('h2', { className: 'text-2xl font-bold mb-4' }, 'Our Story'),
+                story.map(function(para, i) {
+                  return h('p', { key: i, className: 'text-muted-foreground leading-relaxed mt-4' }, para);
+                })
+              )
+            ),
+            h('div', { className: 'grid md:grid-cols-2 gap-8 max-w-5xl mx-auto' },
+              instructors.map(function(inst, i) {
+                return h('div', { key: i, className: 'rounded-xl border bg-card text-card-foreground shadow' },
+                  h('div', { className: 'p-6' },
+                    h('h3', { className: 'text-xl font-semibold' }, inst.name),
+                    h('p', { className: 'text-sm text-primary mt-1' },
+                      (inst.job_title || '') + (inst.experience ? ' · ' + inst.experience + ' years' : '')),
+                    h('p', { className: 'text-muted-foreground text-sm mt-3' }, inst.bio)
+                  )
+                );
+              })
+            )
           )
         )
       );
@@ -223,13 +345,12 @@
 
     // Site settings preview
     var SiteSettingsPreview = function(props) {
-      var entry = props.entry;
-      var data = entry.getIn(['data']).toJS();
+      var data = props.entry.getIn(['data']).toJS();
 
-      return h('div', { style: styles.page },
-        h('div', { style: styles.section },
-          h('h2', { style: styles.h2 }, 'Global Site Settings'),
-          h('div', { style: styles.card },
+      return h('div', { className: 'container px-4 py-16' },
+        h('h2', { className: 'text-3xl font-bold mb-8' }, 'Global Site Settings'),
+        h('div', { className: 'rounded-xl border bg-card text-card-foreground shadow mb-8' },
+          h('div', { className: 'p-6' },
             h('table', { style: { width: '100%', borderCollapse: 'collapse' } },
               h('tbody', null,
                 [
@@ -238,26 +359,26 @@
                   ['Email', data.email],
                   ['Location', data.location]
                 ].map(function(row, i) {
-                  return h('tr', { key: i, style: { borderBottom: '1px solid #e5e7eb' } },
-                    h('td', { style: { padding: '8px', fontWeight: '600', width: '40%' } }, row[0]),
-                    h('td', { style: { padding: '8px', color: MUTED } }, row[1] || '—')
+                  return h('tr', { key: i, style: { borderBottom: '1px solid var(--border)' } },
+                    h('td', { className: 'p-2 font-semibold', style: { width: '40%' } }, row[0]),
+                    h('td', { className: 'p-2 text-muted-foreground' }, row[1] || '—')
                   );
                 })
               )
             )
-          ),
-          h('h3', { style: { fontWeight: '600', marginTop: '24px', marginBottom: '12px' } }, 'Standard Service Areas'),
-          h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '8px' } },
-            (data.service_areas_standard || []).map(function(area, i) {
-              return h('span', { key: i, style: { padding: '4px 12px', background: '#e5e7eb', borderRadius: '99px', fontSize: '0.875rem' } }, area);
-            })
-          ),
-          h('h3', { style: { fontWeight: '600', marginTop: '24px', marginBottom: '12px' } }, 'C1 Service Areas'),
-          h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '8px' } },
-            (data.service_areas_c1 || []).map(function(area, i) {
-              return h('span', { key: i, style: { padding: '4px 12px', background: '#dbeafe', borderRadius: '99px', fontSize: '0.875rem', color: PRIMARY } }, area);
-            })
           )
+        ),
+        h('h3', { className: 'text-lg font-semibold mb-3' }, 'Standard Service Areas'),
+        h('div', { className: 'flex flex-wrap gap-2 mb-6' },
+          (data.service_areas_standard || []).map(function(area, i) {
+            return h('span', { key: i, className: 'px-3 py-1 bg-muted rounded-full text-sm' }, area);
+          })
+        ),
+        h('h3', { className: 'text-lg font-semibold mb-3' }, 'C1 Service Areas'),
+        h('div', { className: 'flex flex-wrap gap-2' },
+          (data.service_areas_c1 || []).map(function(area, i) {
+            return h('span', { key: i, className: 'px-3 py-1 bg-primary/10 text-primary rounded-full text-sm' }, area);
+          })
         )
       );
     };
