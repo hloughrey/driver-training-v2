@@ -1,40 +1,40 @@
 hero:
-  headline: "Expert Driver Training in Warrington & Cheshire"
-  subheadline: "Serving Warrington, Runcorn, Widnes, St Helens, Wigan & surrounding areas"
-  description: "C1 ambulance license training and standard driving lessons from ex-paramedic instructors with 40+ years combined experience"
-  primary_cta_text: "Start C1 Training"
-  primary_cta_href: "/training/c1-licence"
-  secondary_cta_text: "Book Lessons"
-  secondary_cta_href: "/training/standard-licence"
-
+  headline: Expert Driver Training in The North West
+  subheadline: Serving Warrington, Wigan, Bolton & surrounding areas
+  description: C1 ambulance license training and standard driving lessons from
+    ex-paramedic instructors with 40+ years combined experience
+  primary_cta_text: Start C1 Training
+  primary_cta_href: /training/c1-licence
+  secondary_cta_text: Book Lessons
+  secondary_cta_href: /training/standard-licence
 services:
-  title: "Our Services"
-  subtitle: "Choose the training that fits your needs"
+  title: Our Services
+  subtitle: Choose the training that fits your needs
   c1:
-    title: "C1 License Training"
-    description: "Specialist training for ambulance and emergency vehicles"
+    title: C1 License Training
+    description: Specialist training for medium sized trucks. If you are requiring
+      your C1 licence for your future career look no further
     features:
-      - "Vehicles 3.5-7.5 tonnes"
-      - "Paramedic-to-paramedic training"
-      - "Emergency response driving techniques"
-      - "Extended coverage: Liverpool, Manchester, Stockport, Bolton"
+      - Vehicles 3.5-7.5 tonnes
+      - Ambulance service background
+      - Ex response driving instructors, with years of experience.
+      - Covering a wide area within the North West.
   standard:
-    title: "Standard License Training"
-    description: "Professional driving lessons for learner drivers"
+    title: Standard learner driving Training
+    description: Professional driving lessons for learner drivers
     features:
-      - "Defensive driving approach"
-      - "Emergency services expertise"
-      - "Flexible lesson scheduling"
-      - "20 mile radius from Warrington"
-
+      - Defensive driving approach
+      - Emergency services expertise
+      - Flexible lesson scheduling
+      - 20 mile radius from Warrington
+      - Qualified ADI instructors with years of experience
 instructors_section:
-  title: "Meet Your Instructors"
-  subtitle: "Ex-paramedic professionals with 40+ years combined experience"
-
+  title: Meet Your Instructors
+  subtitle: Ex-paramedic professionals with 40+ years combined experience
 stats:
-  - value: "40+"
-    label: "Years Combined Experience"
-  - value: "90%"
-    label: "First-Time Pass Rate"
-  - value: "100%"
-    label: "Ex-Paramedic Instructors"
+  - value: 40+
+    label: Years Combined Experience
+  - value: 90%
+    label: First-Time Pass Rate
+  - value: 100%
+    label: Ex-Paramedic Instructors
