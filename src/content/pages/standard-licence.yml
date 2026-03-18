@@ -26,8 +26,8 @@ what_you_learn:
       description: Learn to identify and respond to potential hazards early, using
         defensive driving techniques developed from emergency services
         experience.
-    - heading: Maneuvers & Parking
-      description: Perfect your parallel parking, bay parking, and all test maneuvers
+    - heading: Manoeuvers & Parking
+      description: Perfect your parallel parking, bay parking, and all test manoeuvers
         with patient, step-by-step instruction.
     - heading: All Weather & Driving Conditions
       description: Gain confidence driving in rain, at night, and in various traffic
@@ -40,7 +40,7 @@ pricing:
   packages:
     - name: Single Lesson
       tagline: Try before you commit
-      price: £35
+      price: £40
       savings: ""
       featured: false
       features:
@@ -49,7 +49,7 @@ pricing:
         - Perfect for first timers
     - name: 10 Lesson Package
       tagline: Most Popular
-      price: £330
+      price: £370
       savings: Save £20
       featured: true
       features:
@@ -58,7 +58,7 @@ pricing:
         - Progress tracking
     - name: 20 Lesson Package
       tagline: Best Value
-      price: £640
+      price: £700
       savings: Save £60
       featured: false
       features:
