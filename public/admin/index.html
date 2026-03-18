@@ -43,6 +43,74 @@
       );
     }
 
+    function ServiceAreasPreview(sa, cols) {
+      sa = sa || {};
+      var gridClass = 'grid grid-cols-2 ' + (cols === 3 ? 'sm:grid-cols-3 gap-4 text-muted-foreground max-w-2xl mx-auto' : 'sm:grid-cols-4 gap-4 text-muted-foreground');
+      return h('section', { className: 'py-16 bg-background' },
+        h('div', { className: 'container px-4' },
+          h('div', { className: 'max-w-4xl mx-auto text-center' },
+            h('h2', { className: 'text-3xl font-bold mb-4' }, sa.title || 'Service Area'),
+            sa.description && h('p', { className: 'text-muted-foreground text-lg mb-6' }, sa.description),
+            h('div', { className: gridClass },
+              (sa.areas || []).map(function(area, i) { return h('div', { key: i }, area); })
+            ),
+            sa.note && h('p', { className: 'text-muted-foreground mt-6' }, sa.note)
+          )
+        )
+      );
+    }
+
+    function CTASectionPreview() {
+      return h('section', { className: 'py-16 sm:py-24 bg-primary text-primary-foreground' },
+        h('div', { className: 'container px-4' },
+          h('div', { className: 'max-w-3xl mx-auto text-center space-y-6' },
+            h('h2', { className: 'text-3xl sm:text-4xl font-bold' }, 'Ready to Start Your Training?'),
+            h('p', { className: 'text-xl opacity-90' }, 'Get in touch today to book your first lesson or consultation'),
+            h('div', { className: 'flex flex-col sm:flex-row gap-4 justify-center items-center pt-4' },
+              h('span', { className: 'inline-flex items-center justify-center rounded-md bg-secondary text-secondary-foreground h-11 px-8 text-sm font-medium' }, 'Get Started'),
+              h('span', { className: 'inline-flex items-center justify-center rounded-md border border-primary-foreground bg-transparent text-primary-foreground h-11 px-8 text-sm font-medium' }, 'Call: 07843 847524')
+            )
+          )
+        )
+      );
+    }
+
+    function FooterPreview() {
+      return h('footer', { className: 'bg-muted/50 border-t mt-auto' },
+        h('div', { className: 'container px-4 py-12' },
+          h('div', { className: 'grid grid-cols-1 md:grid-cols-4 gap-8' },
+            h('div', { className: 'space-y-4' },
+              h('h3', { className: 'font-bold text-lg' }, 'Driver Training North West'),
+              h('p', { className: 'text-sm text-muted-foreground' }, 'Expert C1 ambulance and standard driver training in Warrington and surrounding areas.')
+            ),
+            h('div', { className: 'space-y-4' },
+              h('h4', { className: 'font-semibold' }, 'Quick Links'),
+              h('ul', { className: 'space-y-2 text-base text-muted-foreground' },
+                ['C1 Training','Standard Training','About Us','FAQ','Contact'].map(function(l,i){return h('li',{key:i},l);})
+              )
+            ),
+            h('div', { className: 'space-y-4' },
+              h('h4', { className: 'font-semibold' }, 'Service Areas'),
+              h('ul', { className: 'space-y-1 text-base text-muted-foreground' },
+                ['Warrington','Runcorn','Widnes','St Helens','Wigan','Sale','Altrincham','Northwich'].map(function(a,i){return h('li',{key:i},a);})
+              )
+            ),
+            h('div', { className: 'space-y-4' },
+              h('h4', { className: 'font-semibold' }, 'Contact Us'),
+              h('div', { className: 'space-y-2 text-base text-muted-foreground' },
+                h('p', null, '07843 847524'),
+                h('p', null, 'info@c1drivertrainingnorthwest.com'),
+                h('p', { className: 'pt-2' }, 'Based in Warrington, Cheshire')
+              )
+            )
+          ),
+          h('div', { className: 'border-t mt-8 pt-8 text-center text-sm text-muted-foreground' },
+            h('p', null, '© 2025 Driver Training North West. All rights reserved.')
+          )
+        )
+      );
+    }
+
     // Homepage preview
     var HomepagePreview = function(props) {
       var data = props.entry.getIn(['data']).toJS();
@@ -129,6 +197,36 @@
             h('div', { className: 'text-center space-y-4 mb-12' },
               h('h2', { className: 'text-3xl sm:text-4xl font-bold' }, instructors.title || 'Meet Your Instructors'),
               h('p', { className: 'text-muted-foreground max-w-2xl mx-auto' }, instructors.subtitle || '')
+            ),
+            h('div', { className: 'grid md:grid-cols-2 gap-8 max-w-5xl mx-auto' },
+              h('div', { className: 'rounded-xl border bg-card text-card-foreground shadow' },
+                h('div', { className: 'p-6' },
+                  h('img', { src: '/jayne.jpg', alt: 'Jayne Cumisky', className: 'aspect-square w-full object-cover rounded-lg mb-4' }),
+                  h('h3', { className: 'text-2xl font-semibold' }, 'Jayne Cumisky'),
+                  h('p', { className: 'text-base font-semibold text-primary mt-1' }, '18 years experience')
+                ),
+                h('div', { className: 'p-6 pt-0 space-y-4' },
+                  h('p', { className: 'text-base text-muted-foreground' }, 'Jayne is a fully qualified ADI and C1 driving instructor with extensive experience training ambulance drivers and healthcare professionals across the North West.'),
+                  h('h4', { className: 'font-semibold' }, 'Qualifications'),
+                  h('ul', { className: 'space-y-1 text-base text-muted-foreground' },
+                    ['ADI (Approved Driving Instructor)', 'C1 Category Licence', 'Emergency Response Driving', 'First Aid Certified'].map(function(q,i){return h('li',{key:i},'• '+q);})
+                  )
+                )
+              ),
+              h('div', { className: 'rounded-xl border bg-card text-card-foreground shadow' },
+                h('div', { className: 'p-6' },
+                  h('img', { src: '/neil.png', alt: 'Neil Harrison', className: 'aspect-square w-full object-cover rounded-lg mb-4' }),
+                  h('h3', { className: 'text-2xl font-semibold' }, 'Neil Harrison'),
+                  h('p', { className: 'text-base font-semibold text-primary mt-1' }, '22 years experience')
+                ),
+                h('div', { className: 'p-6 pt-0 space-y-4' },
+                  h('p', { className: 'text-base text-muted-foreground' }, 'Neil brings over two decades of professional driving instruction experience, specialising in C1 ambulance training and standard licence tuition throughout Warrington and the surrounding region.'),
+                  h('h4', { className: 'font-semibold' }, 'Qualifications'),
+                  h('ul', { className: 'space-y-1 text-base text-muted-foreground' },
+                    ['ADI (Approved Driving Instructor)', 'C1 Category Licence', 'Emergency Response Driving', 'Advanced Driving Certificate', 'First Aid Certified'].map(function(q,i){return h('li',{key:i},'• '+q);})
+                  )
+                )
+              )
             )
           )
         ),
@@ -144,7 +242,10 @@
               })
             )
           )
-        )
+        ),
+
+        CTASectionPreview(),
+        FooterPreview()
       );
     };
     CMS.registerPreviewTemplate('homepage', HomepagePreview);
@@ -226,7 +327,11 @@
               )
             )
           )
-        )
+        ),
+
+        ServiceAreasPreview(data.service_areas, 4),
+        CTASectionPreview(),
+        FooterPreview()
       );
     };
     CMS.registerPreviewTemplate('c1-licence', C1Preview);
@@ -298,7 +403,11 @@
               pricing.note && h('p', { className: 'text-center text-muted-foreground mt-6' }, pricing.note)
             )
           )
-        )
+        ),
+
+        ServiceAreasPreview(data.service_areas, 3),
+        CTASectionPreview(),
+        FooterPreview()
       );
     };
     CMS.registerPreviewTemplate('standard-licence', StandardPreview);
@@ -336,7 +445,10 @@
               })
             )
           )
-        )
+        ),
+
+        CTASectionPreview(),
+        FooterPreview()
       );
     };
     CMS.registerPreviewTemplate('about', AboutPreview);
